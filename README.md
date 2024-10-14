@@ -5,7 +5,7 @@
  How to make three parity bits?\
  What is XOR gate?
 
-| input A| input B  | output XOR |
+| input A| input B  | XOR output  |
 | ---|:--:| -:|
 | 0  | 0 | 0 |
 | 1  | 0  | 1 |
