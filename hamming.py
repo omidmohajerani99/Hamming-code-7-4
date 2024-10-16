@@ -1,5 +1,5 @@
-#Hamming(7,4) encoding & decoding 
-import random
+#Hamming code(7,4): Encoding & decoding (correcting one noise) in python
+import random 
 from prettytable import PrettyTable 
 
 def xor(i,j):            
@@ -13,13 +13,18 @@ def Incoding(message):
     print("Alphabet={0,1}  ,  Alphabet size=2  ,  Message length=",4," --->     Block length=",7)
     print("\nSender-Incoding:")
     a=message   #a0,a1,a2,a3
-    p=[None]*3  #p0,p1,p2                 
+    print("a = ",a)    
+    p=[None]*3  #p0,p1,p2                   
     p[0]=xor(xor(a[0],a[1]),a[3])
+    print("p0 = (a0+a1+a3) = ",p[0])      
     p[1]=xor(xor(a[0],a[2]),a[3])
+    print("p1 = (a0+a2+a3) = ",p[1])         
     p[2]=xor(xor(a[1],a[2]),a[3])
+    print("p2 = (a1+a2+a3) = ",p[2]) 
+        
     C=[p[0],p[1],a[0],p[2],a[1],a[2],a[3]]
-    print("a =",a,"--xor-->  p =",p,"\nc = [p0,p1,a0,p2,a1,a2,a3] \nc =",C)
-    print("Sending message...")
+    print("c = [p0,p1,a0,p2,a1,a2,a3] \nc =",C)
+    print("Sending message C ...")
     return C
 
 def Noise(C):
@@ -50,7 +55,7 @@ def Decoding(d):
     print("c0 = (d0+d2+d4+d6) = ",c0)
     
     l=[c2,c1,c0]
-    print("(c2,c1,c0) =",l)
+    print("(c2,c1,c0) = ",l)
 
     myTable = PrettyTable(["(c2 c1 c0)", "Error"]) 
     myTable.add_row(["000", "No Error"]) 
@@ -78,7 +83,7 @@ def Decoding(d):
     print("The message was : ",Decoded_Message)
     return Decoded_Message
 
-Message=[0,0,0,0]   
+Message=[1,0,1,0]   
 Incoded_Message=Incoding(Message)
 Noisy_Incoded_Message=Noise(Incoded_Message)
 Decoding(Noisy_Incoded_Message)
