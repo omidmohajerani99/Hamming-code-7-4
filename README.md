@@ -110,8 +110,9 @@ $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
 
  $k_{2}=d_{3}\oplus d_{4}\oplus d_{5} \oplus d_{6}$\
  $k_{1}=d_{1}\oplus d_{2}\oplus d_{5}\oplus d_{6}$\
- $k_{0}=d_{0} \oplus d_{2} \oplus d_{4} \oplus d_{6}$\
- \
+ $k_{0}=d_{0} \oplus d_{2} \oplus d_{4} \oplus d_{6}$
+ 
+
  ```RUBY
 def Decoding(d):
     print("\nReceiver-Decoding:  \nMessage d recevide! \nd =",d,"\nd = [d0,d1,d2,d3,d4,d5,d6] \n")
