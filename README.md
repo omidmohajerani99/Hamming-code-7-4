@@ -53,7 +53,7 @@ def Encoding(message):
     print("Alphabet={0,1}  ,  Alphabet size=2  ,  Message length=",4," --->     Block length=",7)
     print("\nSender-Encoding:")
     a=message   #a0,a1,a2,a3
-    print("a = ",a)    
+    print("A = ",a)    
     p=[None]*3  #p0,p1,p2                   
     p[0]=xor(xor(a[0],a[1]),a[3])
     print("p0 = (a0+a1+a3) = ",p[0])      
@@ -83,8 +83,8 @@ $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
 ```RUBY
 import random 
 def Noise(C):
-    d=[]
-    d.extend(C)
+    D=[]
+    D.extend(C)
     insexes=[] #indexes
     for i in range(len(C)):
         insexes.append(i)
@@ -92,12 +92,12 @@ def Noise(C):
     picking_random_noise_index=random.sample(insexes, Noise_num) #picking random noese index
     print("\n",Noise_num,"noise/noises falling:") 
     for i in (picking_random_noise_index):                
-        if d[i]==0:
-            d[i]=1
-        elif d[i]==1:
-            d[i]=0  
-        print("c[",i,"] changed! \nd = ",d)                           
-    return d
+        if D[i]==0:
+            D[i]=1
+        elif D[i]==1:
+            D[i]=0  
+        print("c[",i,"] changed! \nd = ",D)                           
+    return D
 ```
 ---
 
@@ -140,7 +140,7 @@ def Decoding(d):
 |6|    110     |    $d_{5}$    |
 |7|    111     |    $d_{6}$    |
 
-``` RUBY
+```RUBY
 from prettytable import PrettyTable 
 
     myTable = PrettyTable(["k2 k1 k0", "Error"]) 
@@ -155,7 +155,7 @@ from prettytable import PrettyTable
 
     print(myTable)  
 ```
-correct the error in D:\
+Correct the error in D:\
 If error was 0 change it to 1. \
 If error was 1 change it to 0.
 
@@ -174,7 +174,7 @@ Now the $A*=(a_{0},a_{1},a_{2},a_{3})$ in $D = (p_{0} , p_{1} , a_{0} , p_{2} , 
             d[Error-1]=0 
 
     Decoded_Message=[d[2],d[4],d[5],d[6]]        
-    print("The message was : ",Decoded_Message)
+    print("The message was: A* = ",Decoded_Message)
     return Decoded_Message
 ```
 ---
@@ -202,4 +202,50 @@ Encoded_Message = Encoding(Message)
 Noisy_Encoded_Message = Noise(Encoded_Message)
 Decoding(Noisy_Encoded_Message)
 #end
+```
+
+```RUBY
+Terminal:
+
+Alphabet={0,1}  ,  Alphabet size=2  ,  Message length= 4  --->     Block length= 7
+
+Sender-Encoding:
+A =  [1, 1, 1, 0]
+p0 = (a0+a1+a3) =  0
+p1 = (a0+a2+a3) =  0
+p2 = (a1+a2+a3) =  0
+c = [p0,p1,a0,p2,a1,a2,a3]
+c = [0, 0, 1, 0, 1, 1, 0]
+Sending message C ...
+
+ 1 noise/noises falling:
+c[ 6 ] changed!
+d =  [0, 0, 1, 0, 1, 1, 1]
+
+Receiver-Decoding:
+Message d recevide!
+d = [0, 0, 1, 0, 1, 1, 1]
+d = [d0,d1,d2,d3,d4,d5,d6]
+
+k2 = (d3+d4+d5+d6) =  1
+k1 = (d1+d2+d5+d6) =  1
+k0 = (d0+d2+d4+d6) =  1
+
+(k2,k1,k0) =  [1, 1, 1]
+
++----------+----------+
+| k2 k1 k0 |  Error   |
++----------+----------+
+|   000    | No Error |
+|   001    |    d0    |
+|   010    |    d1    |
+|   011    |    d2    |
+|   100    |    d3    |
+|   101    |    d4    |
+|   110    |    d5    |
+|   111    |    d6    |
++----------+----------+
+Noise happened on d6
+Correcting noise...
+The message was: A* =  [1, 1, 1, 0]
 ```

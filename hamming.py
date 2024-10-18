@@ -13,7 +13,7 @@ def Encoding(message):
     print("Alphabet={0,1}  ,  Alphabet size=2  ,  Message length=",4," --->     Block length=",7)
     print("\nSender-Encoding:")
     a=message   #a0,a1,a2,a3
-    print("a = ",a)    
+    print("A = ",a)    
     p=[None]*3  #p0,p1,p2                   
     p[0]=xor(xor(a[0],a[1]),a[3])
     print("p0 = (a0+a1+a3) = ",p[0])      
@@ -28,8 +28,8 @@ def Encoding(message):
     return C
 
 def Noise(C):
-    d=[]
-    d.extend(C)
+    D=[]
+    D.extend(C)
     insexes=[] #indexes
     for i in range(len(C)):
         insexes.append(i)
@@ -37,12 +37,12 @@ def Noise(C):
     picking_random_noise_index=random.sample(insexes, Noise_num) #picking random noese index
     print("\n",Noise_num,"noise/noises falling:") 
     for i in (picking_random_noise_index):                
-        if d[i]==0:
-            d[i]=1
-        elif d[i]==1:
-            d[i]=0  
-        print("c[",i,"] changed! \nd = ",d)                           
-    return d
+        if D[i]==0:
+            D[i]=1
+        elif D[i]==1:
+            D[i]=0  
+        print("c[",i,"] changed! \nd = ",D)                           
+    return D
 
 def Decoding(d):
     print("\nReceiver-Decoding:  \nMessage d recevide! \nd =",d,"\nd = [d0,d1,d2,d3,d4,d5,d6] \n")
@@ -80,7 +80,7 @@ def Decoding(d):
             d[Error-1]=0 
 
     Decoded_Message=[d[2],d[4],d[5],d[6]]        
-    print("The message was : ",Decoded_Message)
+    print("The message was: A* = ",Decoded_Message)
     return Decoded_Message
 
 Message=[1,1,1,0]   
@@ -88,3 +88,4 @@ Encoded_Message=Encoding(Message)
 Noisy_Encoded_Message=Noise(Encoded_Message)
 Decoding(Noisy_Encoded_Message)
 #end
+
