@@ -69,7 +69,7 @@ def Encoding(message):
 ```
 ---
 
- ### What is noise in channel? how it happend?
+ ### What is noise in channel?
 
  <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3e5366c809cb41ab57f4364b475895f13a9dd328" class="mwe-math-fallback-image-inline mw-invert skin-invert" title="Channel model" aria-hidden="true" style="vertical-align: -3.146ex; margin-bottom: -0.525ex; width:61.869ex; height:7.843ex;" alt="{\displaystyle {\xrightarrow[{\text{Message}}]{W}}{\begin{array}{|c| }\hline {\text{Encoder}}\\f_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Encoded \atop sequence} }]{A}}{\begin{array}{|c| }\hline {\text{Channel}}\\p(y|x)\\\hline \end{array}}{\xrightarrow[{\mathrm {Received \atop sequence} }]{Y^{n}}}{\begin{array}{|c| }\hline {\text{Decoder}}\\g_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Estimated \atop message} }]{\hat {W}}}}">\
  \
