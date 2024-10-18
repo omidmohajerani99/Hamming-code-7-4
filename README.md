@@ -7,13 +7,18 @@ Richard Hamming worked for Bell Labs in the 1940s and 1950s. During that time, c
 
 Hamming reasoned that, if a computer can detect an error, it could also correct the error. So, he began working on an error correcting algorithm, and in 1950, he published the Hamming code.
 https://www.techtarget.com/whatis/definition/Hamming-code
+
+---
+
 ### What is hamming code(7,4)?
- In coding theory,Hamming(7,4) is a linear error-correcting code and a member of a larger family of Hamming codes that encodes four bits of data into seven bits by adding three parity bits and after decoding can correct any single-bit error ($t=1$), or detect all single-bit and two-bit errors ($\rho=2$). The minimum Hamming distance between any two correct codewords is three ($d_{min}=3$).This means that for transmission medium situations where burst errors do not occur, Hamming's (7,4) code is effective.\
+ In coding theory,Hamming(7,4) is a linear error-correcting code and it is a member of a larger family of Hamming codes that encodes four bits of data into seven bits by adding three parity bits and after decoding can correct any single-bit error ($t=1$), or detect all single-bit and two-bit errors ($\rho=2$). The minimum Hamming distance between any two correct codewords is three ($d_{min}=3$).This means that for transmission medium situations where burst errors do not occur, Hamming's (7,4) code is effective.\
  $d_{min}\ge2t+1$ \
  $d_{min}\ge \rho+1$
 
+---
+
  ### How does sender encode four bits data in hamming(7,4)?
-Suppose we want to transmit this 4 bits data $(a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel (BSC) and we need to produce 3 parity bits $(p_{0},p_{1},p_{2})$.\
+Suppose we want to transmit this 4 bits data $A = (a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel (BSC) and we need to find 3 parity bits $P = (p_{0},p_{1},p_{2})$.\
  At first we have to know xor gate (the xor symbol is $\oplus$):
 |input A|input B|XOR  output|
 | ---   |:--:   | -:|
@@ -22,31 +27,38 @@ Suppose we want to transmit this 4 bits data $(a_{0},a_{1},a_{2},a_{3})$ over a 
 | 0     | 1     | 1 |
 | 1     | 1     | 0 |
 
-$Data=(a_{0},a_{1},a_{2},a_{3})$
+$A = (a_{0},a_{1},a_{2},a_{3})$
 
 $p_{0} = a_{0} \oplus a_{1} \oplus a_{3}$ \
 $p_{1} = a_{0} \oplus a_{2} \oplus a_{3}$ \
 $p_{2} = a_{1} \oplus a_{2} \oplus a_{3}$
 
-Second we will sit four bits of data into seven bit blocks (with $d$ as a Hamming code word symbol ) :
+Second we will sit four bits of data into seven bits block ( with $C$ as a Hamming code word symbol ) :
 
-$C = [c_{0} , c_{1} , c_{2} , c_{3} , c_{4} , c_{5} , c_{6}]$ \
-$C = [p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3}]$
+$C = (c_{0} , c_{1} , c_{2} , c_{3} , c_{4} , c_{5} , c_{6})$ \
+$C = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
 
 and send it over the channel.
+
+---
 
  ### What is noise in channel? how it happend?
 
  <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3e5366c809cb41ab57f4364b475895f13a9dd328" class="mwe-math-fallback-image-inline mw-invert skin-invert" title="Channel model" aria-hidden="true" style="vertical-align: -3.146ex; margin-bottom: -0.525ex; width:61.869ex; height:7.843ex;" alt="{\displaystyle {\xrightarrow[{\text{Message}}]{W}}{\begin{array}{|c| }\hline {\text{Encoder}}\\f_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Encoded \atop sequence} }]{X^{n}}}{\begin{array}{|c| }\hline {\text{Channel}}\\p(y|x)\\\hline \end{array}}{\xrightarrow[{\mathrm {Received \atop sequence} }]{Y^{n}}}{\begin{array}{|c| }\hline {\text{Decoder}}\\g_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Estimated \atop message} }]{\hat {W}}}}">\
  \
-We simulate a BSC channel that has the ability to create a random noise on one of the seven bits of the C codeword .During the time of sending the C code word in the channel, a noise may be created on the C code word and the C code word becomes to D code word. 
+We simulate a BSC channel that has the ability to create a random noise on one of the seven bits of the C codeword. During the time of sending the C code word in the channel, a noise may be created on one of the the C codeword bits and the C codeword becomes to D codeword. 
 
-$d = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
-$d = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
+$D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
+$D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
+
+A --Encoding--> C --Noies-->  D --Decoding--> A*
+
+---
+
  ### How does reciver decode & fixes one error in hamming code?
-The reciver recived 7 bits D code word:\
-$d = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
-$d = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
+The reciver recived 7 bits D codeword:\
+$D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
+$D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
 
  For decoding we need to find $k_{2} k_{1} k_{0}$ :
 
@@ -66,4 +78,28 @@ $d = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
 |6|    110     |    $d_{5}$    |
 |7|    111     |    $d_{6}$    |
 
-corecte the error with changing the error and the $(a_{0},a_{1},a_{2},a_{3})$ in $d = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$ is the message.
+Corecte the error in D:\
+If error was 0 change it to 1. \
+If error was 1 change it to 0.
+
+Now the $A*=(a_{0},a_{1},a_{2},a_{3})$ in $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$ is the message.
+
+---
+### For example:
+Encoding:\
+$A = (1, 1, 1, 0)$\
+$P_{0} =0$\
+$P_{1} =0$\
+$P_{2} =0$\
+$P = (0,0,0)$\
+$C = (0, 0, 1, 0, 1, 1, 0)$
+
+Noise:\
+$c_{6}$ changed!\
+$D =(0, 0, 1, 0, 1, 1, 1)$
+
+Decoding:\
+$K =(1,1,1)$    in table:  111 &rarr; d6\
+Noise happened in d6\
+$A* =(1, 1, 1, 0)$
+

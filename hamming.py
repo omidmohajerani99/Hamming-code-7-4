@@ -83,7 +83,7 @@ def Decoding(d):
     print("The message was : ",Decoded_Message)
     return Decoded_Message
 
-Message=[1,0,1,0]   
+Message=[1,1,1,0]   
 Encoded_Message=Encoding(Message)
 Noisy_Encoded_Message=Noise(Encoded_Message)
 Decoding(Noisy_Encoded_Message)
