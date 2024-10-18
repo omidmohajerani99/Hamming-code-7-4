@@ -72,7 +72,7 @@ def Decoding(d):
     if Error== 0:
         print ("No noise has occurred.")
     else:    
-        print("Noise happened in = d" + str(Error-1))
+        print("Noise happened on d" + str(Error-1))
         print("Correcting noise...")
         if d[Error-1]==0:
             d[Error-1]=1

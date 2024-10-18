@@ -155,7 +155,7 @@ from prettytable import PrettyTable
 
     print(myTable)  
 ```
-Corecte the error in D:\
+correct the error in D:\
 If error was 0 change it to 1. \
 If error was 1 change it to 0.
 
@@ -166,7 +166,7 @@ Now the $A*=(a_{0},a_{1},a_{2},a_{3})$ in $D = (p_{0} , p_{1} , a_{0} , p_{2} , 
     if Error== 0:
         print ("No noise has occurred.")
     else:    
-        print("Noise happened in = d" + str(Error-1))
+        print("Noise happened on d" + str(Error-1))
         print("Correcting noise...")
         if d[Error-1]==0:
             d[Error-1]=1
@@ -193,7 +193,7 @@ $D =(0, 0, 1, 0, 1, 1, 1)$
 
 Decoding:\
 $K =(1,1,1)$    in table:  111 &rarr; d6\
-Noise happened in d6\
+Noise happened on d6\
 $A* =(1, 1, 1, 0)$
 
 ```ruby
