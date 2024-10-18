@@ -9,9 +9,9 @@ def xor(i,j):
         xor=1   
     return int(xor)   
 
-def Incoding(message):
+def Encoding(message):
     print("Alphabet={0,1}  ,  Alphabet size=2  ,  Message length=",4," --->     Block length=",7)
-    print("\nSender-Incoding:")
+    print("\nSender-Encoding:")
     a=message   #a0,a1,a2,a3
     print("a = ",a)    
     p=[None]*3  #p0,p1,p2                   
@@ -45,19 +45,19 @@ def Noise(C):
     return d
 
 def Decoding(d):
-    print("\nReceiver-Decoding:  \nd =",d,"\nd = [d0,d1,d2,d3,d4,d5,d6] \nd = [p0,p1,a0,p2,a1,a2,a3]")
+    print("\nReceiver-Decoding:  \nMessage d recevide! \nd =",d,"\nd = [d0,d1,d2,d3,d4,d5,d6] \n")
     
-    c2=xor(xor(xor(d[3],d[4]),d[5]),d[6]);
-    print("c2 = (d3+d4+d5+d6) = ",c2)
-    c1=xor(xor(xor(d[1],d[2]),d[5]),d[6]);
-    print("c1 = (d1+d2+d5+d6) = ",c1);
-    c0=xor(xor(xor(d[0],d[2]),d[4]),d[6]);
-    print("c0 = (d0+d2+d4+d6) = ",c0)
+    k2=xor(xor(xor(d[3],d[4]),d[5]),d[6]);
+    print("k2 = (d3+d4+d5+d6) = ",k2)
+    k1=xor(xor(xor(d[1],d[2]),d[5]),d[6]);
+    print("k1 = (d1+d2+d5+d6) = ",k1);
+    k0=xor(xor(xor(d[0],d[2]),d[4]),d[6]);
+    print("k0 = (d0+d2+d4+d6) = ",k0,"\n")
     
-    l=[c2,c1,c0]
-    print("(c2,c1,c0) = ",l)
+    l=[k2,k1,k0]
+    print("(k2,k1,k0) = ",l,"\n")
 
-    myTable = PrettyTable(["(c2 c1 c0)", "Error"]) 
+    myTable = PrettyTable(["k2 k1 k0", "Error"]) 
     myTable.add_row(["000", "No Error"]) 
     myTable.add_row(["001", "d0"]) 
     myTable.add_row(["010", "d1"]) 
@@ -84,7 +84,7 @@ def Decoding(d):
     return Decoded_Message
 
 Message=[1,0,1,0]   
-Incoded_Message=Incoding(Message)
-Noisy_Incoded_Message=Noise(Incoded_Message)
-Decoding(Noisy_Incoded_Message)
+Encoded_Message=Encoding(Message)
+Noisy_Encoded_Message=Noise(Encoded_Message)
+Decoding(Noisy_Encoded_Message)
 #end

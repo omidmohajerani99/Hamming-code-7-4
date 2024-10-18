@@ -1,37 +1,61 @@
-## Hamming code(7,4): Encoding & decoding (correcting one noise) in python
-### 0.What is hamming code(7,4)?
- Hamming(7,4) is a linear error-correcting code that encodes four bits of data into seven bits by adding three parity bits and after decoding can find two errors and fix one error. It is a member of a larger family of Hamming codes.
- ### 1.How the sender encodes four bits message in hamming code?
-   What is XOR gate?
- 
-|input A|input B|XOR output|
+## Hamming code(7,4): Encoding & decoding (correcting  any single-bit error) in python
+
+### Hamming code history
+Before Hamming code, there were several error correction methods in use that were not as efficient or effective. The simplest method involves adding a single parity bit. This can detect a single error but not detect two-bit errors nor correct the error. Another method was repeating each bit three times. This could detect and correct a single bit error but not errors in two bits. Repeating the bits was also very inefficient.
+
+Richard Hamming worked for Bell Labs in the 1940s and 1950s. During that time, computers used relays and read information from punched paper tape. These systems were often prone to errors relating to the paper tape being misread or relays getting stuck. If an operator was on hand when the error occurred, the program could be restarted; if the error occurred outside of working hours, the computer would skip the entire program, losing time and work.
+
+Hamming reasoned that, if a computer can detect an error, it could also correct the error. So, he began working on an error correcting algorithm, and in 1950, he published the Hamming code.
+https://www.techtarget.com/whatis/definition/Hamming-code
+### What is hamming code(7,4)?
+ In coding theory,Hamming(7,4) is a linear error-correcting code and a member of a larger family of Hamming codes that encodes four bits of data into seven bits by adding three parity bits and after decoding can correct any single-bit error ($t=1$), or detect all single-bit and two-bit errors ($\rho=2$). The minimum Hamming distance between any two correct codewords is three ($d_{min}=3$).This means that for transmission medium situations where burst errors do not occur, Hamming's (7,4) code is effective.\
+ $d_{min}\ge2t+1$ \
+ $d_{min}\ge \rho+1$
+
+ ### How does sender encode four bits data in hamming(7,4)?
+Suppose we want to transmit this 4 bits data $(a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel (BSC) and we need to produce 3 parity bits $(p_{0},p_{1},p_{2})$.\
+ At first we have to know xor gate (the xor symbol is $\oplus$):
+|input A|input B|XOR  output|
 | ---   |:--:   | -:|
 | 0     | 0     | 0 |
 | 1     | 0     | 1 |
 | 0     | 1     | 1 |
 | 1     | 1     | 0 |
 
- xor &rarr; + 
- + How to make three parity bits?\
-(xor &rarr; +)\
-$p_{0} = a_{0} + a_{1} + a_{3}$\
-$p_{1} = a_{0} + a_{2} + a_{3}$\
-$p_{2} = a_{1} + a_{2} + a_{3}$\
+$Data=(a_{0},a_{1},a_{2},a_{3})$
 
+$p_{0} = a_{0} \oplus a_{1} \oplus a_{3}$ \
+$p_{1} = a_{0} \oplus a_{2} \oplus a_{3}$ \
+$p_{2} = a_{1} \oplus a_{2} \oplus a_{3}$
 
-$d = [d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6}]$ \
-$d = [p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3}]$
+Second we will sit four bits of data into seven bit blocks (with $d$ as a Hamming code word symbol ) :
 
+$C = [c_{0} , c_{1} , c_{2} , c_{3} , c_{4} , c_{5} , c_{6}]$ \
+$C = [p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3}]$
 
+and send it over the channel.
 
- ### 2.What is noise in channel? how it happend?
+ ### What is noise in channel? how it happend?
 
- ### 3.How messege reciver decodes & fixes one error in hamming code?
-(xor &rarr; +)\
- $c_{2}=d_{3}+d_{4}+d_{5}+d_{6}$\
- $c_{1}=d_{1}+d_{2}+d_{5}+d_{6}$\
- $c_{0}=d0+d2+d4+d6$
-|| $c_{2} c_{1} c_{0}$ |  Error index  |
+ <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3e5366c809cb41ab57f4364b475895f13a9dd328" class="mwe-math-fallback-image-inline mw-invert skin-invert" title="Channel model" aria-hidden="true" style="vertical-align: -3.146ex; margin-bottom: -0.525ex; width:61.869ex; height:7.843ex;" alt="{\displaystyle {\xrightarrow[{\text{Message}}]{W}}{\begin{array}{|c| }\hline {\text{Encoder}}\\f_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Encoded \atop sequence} }]{X^{n}}}{\begin{array}{|c| }\hline {\text{Channel}}\\p(y|x)\\\hline \end{array}}{\xrightarrow[{\mathrm {Received \atop sequence} }]{Y^{n}}}{\begin{array}{|c| }\hline {\text{Decoder}}\\g_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Estimated \atop message} }]{\hat {W}}}}">\
+ \
+We simulate a BSC channel that has the ability to create a random noise on one of the seven bits of the C codeword .During the time of sending the C code word in the channel, a noise may be created on the C code word and the C code word becomes to D code word. 
+
+$d = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
+$d = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
+ ### How does reciver decode & fixes one error in hamming code?
+The reciver recived 7 bits D code word:\
+$d = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
+$d = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
+
+ For decoding we need to find $k_{2} k_{1} k_{0}$ :
+
+ $k_{2}=d_{3}\oplus d_{4}\oplus d_{5} \oplus d_{6}$\
+ $k_{1}=d_{1}\oplus d_{2}\oplus d_{5}\oplus d_{6}$\
+ $k_{0}=d_{0} \oplus d_{2} \oplus d_{4} \oplus d_{6}$\
+ \
+ and correct that one error with The table below:
+|| $k_{2} k_{1} k_{0}$ |  Error index  |
 | ---|:--:| -:|
 |0|    000     | No Error |
 |1|    001     |    $d_{0}$    |
@@ -42,11 +66,4 @@ $d = [p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3}]$
 |6|    110     |    $d_{5}$    |
 |7|    111     |    $d_{6}$    |
 
- ### 4.History
-
-$\frac{n!}{k!(n-k)!}$\
-$\color{red}x$\
- a -xor&rarr;p\
-- [x] Write the press release
-- [ ] Update the website
-- [ ] Contact the media
+corecte the error with changing the error and the $(a_{0},a_{1},a_{2},a_{3})$ in $d = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$ is the message.
