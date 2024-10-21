@@ -1,4 +1,5 @@
 ## Hamming code(7,4): Encoding & decoding (correcting  any single-bit error) in python
+
 ### Objectives:
 Here we will give explanations about the history and coding and decoding (correction of an error) of Hamming(7,4) and we will also simulate a BSC channel that is capable of creating a noise in the transmitted codewords. We have also provided Python code at the end of each section. Finally, we have discussed an example for a better understanding of all the said content.
 
@@ -8,8 +9,7 @@ From [https://www.techtarget.com/whatis/definition/Hamming-code ] :
 
 "Before Hamming code, there were several error correction methods in use that were not as efficient or effective. The simplest method involves adding a single parity bit. This can detect a single error but not detect two-bit errors nor correct the error. Another method was repeating each bit three times. This could detect and correct a single bit error but not errors in two bits. Repeating the bits was also very inefficient.\
 Richard Hamming worked for Bell Labs in the 1940s and 1950s. During that time, computers used relays and read information from punched paper tape. These systems were often prone to errors relating to the paper tape being misread or relays getting stuck. If an operator was on hand when the error occurred, the program could be restarted; if the error occurred outside of working hours, the computer would skip the entire program, losing time and work.\
-Hamming reasoned that, if a computer can detect an error, it could also correct the error. So, he began working on an error correcting algorithm, and in 1950, he published the Hamming code."
-
+Hamming reasoned that, if a computer can detect an error, it could also correct the error. So, he began working on an error correcting algorithm, and in 1950, he published the Hamming code."\
 
 ---
 
@@ -73,12 +73,19 @@ def Encoding(message):
 ---
 
  ### How simulate a BSC channel that is capable of creating a noise in the transmitted codewords?
- <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3e5366c809cb41ab57f4364b475895f13a9dd328" class="mwe-math-fallback-image-inline mw-invert skin-invert" title="Channel model" aria-hidden="true" style="vertical-align: -3.146ex; margin-bottom: -0.525ex; width:61.869ex; height:7.843ex;" alt="{\displaystyle {\xrightarrow[{\text{Message}}]{W}}{\begin{array}{|c| }\hline {\text{Encoder}}\\f_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Encoded \atop sequence} }]{A}}{\begin{array}{|c| }\hline {\text{Channel}}\\p(y|x)\\\hline \end{array}}{\xrightarrow[{\mathrm {Received \atop sequence} }]{Y^{n}}}{\begin{array}{|c| }\hline {\text{Decoder}}\\g_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Estimated \atop message} }]{\hat {W}}}}">\
- \
- Image from[https://en.wikipedia.org/wiki/Noisy-channel_coding_theorem]
+ <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3e5366c809cb41ab57f4364b475895f13a9dd328" class="mwe-math-fallback-image-inline mw-invert skin-invert" title="Channel model" aria-hidden="true" style="vertical-align: -3.146ex; margin-bottom: -0.525ex; width:61.869ex; height:7.843ex;" alt="{\displaystyle {\xrightarrow[{\text{Message}}]{W}}{\begin{array}{|c| }\hline {\text{Encoder}}\\f_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Encoded \atop sequence} }]{A}}{\begin{array}{|c| }\hline {\text{Channel}}\\p(y|x)\\\hline \end{array}}{\xrightarrow[{\mathrm {Received \atop sequence} }]{Y^{n}}}{\begin{array}{|c| }\hline {\text{Decoder}}\\g_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Estimated \atop message} }]{\hat {W}}}}">
  
+\
+In simple terms, it can be said that four things can happen in a symmetric binary channel:\
+Sending zero and receiving zero.\
+Sending zero and receiving one (error).\
+Sending one and receiving one.\
+Sending one and receiving zero (error).
+
+ Image from[https://en.wikipedia.org/wiki/Noisy-channel_coding_theorem]
+
 During the time of sending the C codeword in the channel, a noise may be created on C codeword and the C codeword becomes to new D codeword.\
-We simulate a BSC channel in python that has the ability to create a random noise on one of the seven bits of the C codeword.  
+We simulate a BSC channel in python that has the ability to create a random noise on one of the seven bits of the C codeword.\ 
 
 A &rarr;Encoding&rarr; C &rarr;Noies&rarr;  D &rarr;Decoding&rarr; A*
 
