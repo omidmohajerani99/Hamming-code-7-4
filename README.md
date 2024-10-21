@@ -140,7 +140,7 @@ def Decoding(d):
  ```
 
  and correct that one error with The table below:
-|| $k_{2} k_{1} k_{0}$ |  Error index  |
+|| $k_{2} k_{1} k_{0}$ |  Error |
 | ---|:--:| -:|
 |0|    000     | No Error |
 |1|    001     |    $d_{0}$    |
