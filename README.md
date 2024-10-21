@@ -22,8 +22,10 @@ Hamming reasoned that, if a computer can detect an error, it could also correct 
 ---
 
  ### How does sender encode four bits data in hamming(7,4)?
-Suppose we want to transmit this 4 bits data $A = (a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel (BSC) and we need to find 3 parity bits $P = (p_{0},p_{1},p_{2})$.\
+1. Suppose we want to transmit this 4 bits data $A = (a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel (BSC) and we need to find 3 parity bits $P = (p_{0},p_{1},p_{2})$.\
  At first we have to know xor gate (the xor symbol is $\oplus$):
+ <br> 
+
 |input A|input B|XOR  output|
 | ---   |:--:   | -:|
 | 0     | 0     | 0 |
@@ -39,17 +41,16 @@ def xor(i,j):
         xor=1   
     return int(xor) 
 ```
-$A = (a_{0},a_{1},a_{2},a_{3})$
-
+* $A = (a_{0},a_{1},a_{2},a_{3})$<br>
 $p_{0} = a_{0} \oplus a_{1} \oplus a_{3}$ \
 $p_{1} = a_{0} \oplus a_{2} \oplus a_{3}$ \
 $p_{2} = a_{1} \oplus a_{2} \oplus a_{3}$
 
-Second we will sit four bits of data into seven bits block ( with $C$ as a Hamming codeword symbol ) :
-
+2. Second we will sit four bits of data into seven bits block ( with $C$ as a Hamming codeword symbol ) :
+<br>
 $C = (c_{0} , c_{1} , c_{2} , c_{3} , c_{4} , c_{5} , c_{6})$ \
 $C = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
-
+<br>
 and send it over the channel.
 
 ```RUBY
@@ -73,20 +74,21 @@ def Encoding(message):
 ```
 ---
  ### How simulate a Binary symmetric channel(BSC) that is capable of creating a noise in the transmitted codewords?
-A &rarr; Encoding &rarr; C &rarr; Falling noise &rarr;  D &rarr; Decoding &rarr; A* 
+ * First of all, pay attention to the  basic mathematical model for a communication system:\
 <br><br>
- <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3e5366c809cb41ab57f4364b475895f13a9dd328" class="mwe-math-fallback-image-inline mw-invert skin-invert" title="Channel model" aria-hidden="true" style="vertical-align: -3.146ex; margin-bottom: -0.525ex; width:61.869ex; height:7.843ex;" alt="{\displaystyle {\xrightarrow[{\text{Message}}]{W}}{\begin{array}{|c| }\hline {\text{Encoder}}\\f_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Encoded \atop sequence} }]{A}}{\begin{array}{|c| }\hline {\text{Channel}}\\p(y|x)\\\hline \end{array}}{\xrightarrow[{\mathrm {Received \atop sequence} }]{Y^{n}}}{\begin{array}{|c| }\hline {\text{Decoder}}\\g_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Estimated \atop message} }]{\hat {W}}}}"> 
-
-
+  <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3e5366c809cb41ab57f4364b475895f13a9dd328" class="mwe-math-fallback-image-inline mw-invert skin-invert" title="Channel model" aria-hidden="true" style="vertical-align: -3.146ex; margin-bottom: -0.525ex; width:61.869ex; height:7.843ex;" alt="{\displaystyle {\xrightarrow[{\text{Message}}]{W}}{\begin{array}{|c| }\hline {\text{Encoder}}\\f_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Encoded \atop sequence} }]{A}}{\begin{array}{|c| }\hline {\text{Channel}}\\p(y|x)\\\hline \end{array}}{\xrightarrow[{\mathrm {Received \atop sequence} }]{Y^{n}}}{\begin{array}{|c| }\hline {\text{Decoder}}\\g_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Estimated \atop message} }]{\hat {W}}}}"> 
+ <br><br>
 Image from [https://en.wikipedia.org/wiki/Noisy-channel_coding_theorem] 
 
+* Similarly we have:<br>
+A &rarr; Encoding &rarr; C &rarr; Falling noise &rarr;  D &rarr; Decoding &rarr; A* 
 * In simple terms, it can be said that four events can happen in a symmetric binary channel (BSC):\
 Sending 0 and receiving 0.\
 Sending 0 and receiving 1 (error).\
 Sending 1 and receiving 1.\
 Sending 1 and receiving 0 (error).
 
-* During the time of sending the C codeword in the channel, a noise may be created on C codeword and the C codeword becomes to new D codeword. We simulate a BSC channel in python that has the ability to create a random noise on one of the seven bits of the C codeword.\
+* During the time of sending the C codeword in the channel, a noise may be created on C codeword and the C codeword becomes to new D codeword. We simulate a BSC channel in python that has the ability to create a random noise on one of the seven bits of the C codeword.<br>
 $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
 
