@@ -77,7 +77,8 @@ def Encoding(message):
  \
  Image from[https://en.wikipedia.org/wiki/Noisy-channel_coding_theorem]
  
-We simulate a BSC channel that has the ability to create a random noise on one of the seven bits of the C codeword. During the time of sending the C code word in the channel, a noise may be created on one of the seven bits of the C codeword and the C codeword becomes to new D codeword. 
+During the time of sending the C codeword in the channel, a noise may be created on C codeword and the C codeword becomes to new D codeword.\
+We simulate a BSC channel that has the ability to create a random noise on one of the seven bits of the C codeword.  
 
 A &rarr;Encoding&rarr; C &rarr;Noies&rarr;  D &rarr;Decoding&rarr; A*
 
