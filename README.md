@@ -78,16 +78,14 @@ def Encoding(message):
 
 Image from [https://en.wikipedia.org/wiki/Noisy-channel_coding_theorem] 
 
-In simple terms, it can be said that four events can happen in a symmetric binary channel (BSC):\
+* In simple terms, it can be said that four events can happen in a symmetric binary channel (BSC):\
 Sending 0 and receiving 0.\
 Sending 0 and receiving 1 (error).\
 Sending 1 and receiving 1.\
 Sending 1 and receiving 0 (error).
 
-During the time of sending the C codeword in the channel, a noise may be created on C codeword and the C codeword becomes to new D codeword. We simulate a BSC channel in python that has the ability to create a random noise on one of the seven bits of the C codeword. 
-
-A &rarr;Encoding&rarr; C &rarr;Noies&rarr;  D &rarr;Decoding&rarr; A*
-
+* During the time of sending the C codeword in the channel, a noise may be created on C codeword and the C codeword becomes to new D codeword. We simulate a BSC channel in python that has the ability to create a random noise on one of the seven bits of the C codeword.\
+A &rarr;Encoding&rarr; C &rarr;Noies&rarr;  D &rarr;Decoding&rarr; A*\
 $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
 
@@ -113,12 +111,11 @@ def Noise(C):
 ---
 
  ### How does reciver decode and correct an error in hamming(7,4)?
-The reciver recived 7 bits D codeword:\
+0. The reciver recived 7 bits D codeword:\
 $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
 
- For decoding we need to find $k_{2} k_{1} k_{0}$ :
-
+ 1. For decoding we need to find $k_{2} k_{1} k_{0}$ :\
  $k_{2}=d_{3}\oplus d_{4}\oplus d_{5} \oplus d_{6}$\
  $k_{1}=d_{1}\oplus d_{2}\oplus d_{5}\oplus d_{6}$\
  $k_{0}=d_{0} \oplus d_{2} \oplus d_{4} \oplus d_{6}$
@@ -139,17 +136,18 @@ def Decoding(d):
     print("(k2,k1,k0) = ",l,"\n")
  ```
 
- and correct that one error with The table below:
-|| $k_{2} k_{1} k_{0}$ |  Error |
-| ---|:--:| -:|
-|0|    000     | No Error |
-|1|    001     |    $d_{0}$    |
-|2|    010     |    $d_{1}$    |
-|3|    011     |    $d_{2}$    |
-|4|    100     |    $d_{3}$    |
-|5|    101     |    $d_{4}$    |
-|6|    110     |    $d_{5}$    |
-|7|    111     |    $d_{6}$    |
+ 2.  Find that one error with The table below:
+   
+||| | $k_{2} k_{1} k_{0}$ |  Error |
+|---|---|  ---|:--:| -:|
+|||0|    000     | No Error |
+|||1|    001     |    $d_{0}$    |
+|||2|    010     |    $d_{1}$    |
+|||3|    011     |    $d_{2}$    |
+|||4|    100     |    $d_{3}$    |
+|||5|    101     |    $d_{4}$    |
+|||6|    110     |    $d_{5}$    |
+|||7|    111     |    $d_{6}$    |
 
 ```RUBY
 from prettytable import PrettyTable 
@@ -166,11 +164,11 @@ from prettytable import PrettyTable
 
     print(myTable)  
 ```
-Correct the error in D:\
+3. Correct the error in D:\
 If error was 0 change it to 1. \
 If error was 1 change it to 0.
 
-Now the $A*=(a_{0},a_{1},a_{2},a_{3})$ in $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$ is the message.
+4. The $(a_{0},a_{1},a_{2},a_{3})$ in $(p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$ is the message.
 
 ```RUBY
     Error = int("".join(str(x) for x in l), 2)
