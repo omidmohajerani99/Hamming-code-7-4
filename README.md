@@ -22,7 +22,7 @@ Hamming reasoned that, if a computer can detect an error, it could also correct 
 ---
 
  ### How does sender encode four bits data in hamming(7,4)?
-0. Suppose we want to transmit this 4 bits data $A = (a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel (BSC) and we need to find 3 parity bits $P = (p_{0},p_{1},p_{2})$.
+0. Suppose we want to transmit this 4 bits data $A = (a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel(BSC) and we need to find 3 parity bits $P = (p_{0},p_{1},p_{2})$.
  <br> 
 
  1. At first we have to know xor gate(the xor symbol is $\oplus$):
