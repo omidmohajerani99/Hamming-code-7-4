@@ -15,7 +15,7 @@ Hamming reasoned that, if a computer can detect an error, it could also correct 
 ---
 
 ### What is hamming code(7,4)?
- In coding theory,Hamming(7,4) is a linear error-correcting code and it is a member of a larger family of Hamming codes that encodes four bits of data into seven bits by adding three parity bits and after decoding can correct any single-bit error ($t=1$), or detect all single-bit and two-bit errors ($\rho=2$). The minimum Hamming distance between any two correct codewords is three ($d_{min}=3$).This means that for transmission medium situations where burst errors do not occur, Hamming's (7,4) code is effective.
+ In coding theory,Hamming(7,4) is a linear error-correcting code and it is a member of a larger family of Hamming codes that encodes four bits of data into seven bits by adding three parity bits and after decoding can correct any single-bit error($t=1$), or detect all single-bit and two-bit errors($\rho=2$). The minimum Hamming distance between any two correct codewords is three($d_{min}=3$).This means that for transmission medium situations where burst errors do not occur, Hamming's(7,4) code is effective.
  * $d_{min}\ge2t+1$ \
  * $d_{min}\ge \rho+1$
 
@@ -25,7 +25,7 @@ Hamming reasoned that, if a computer can detect an error, it could also correct 
 0. Suppose we want to transmit this 4 bits data $A = (a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel (BSC) and we need to find 3 parity bits $P = (p_{0},p_{1},p_{2})$.
  <br> 
 
- 1. At first we have to know xor gate (the xor symbol is $\oplus$):
+ 1. At first we have to know xor gate(the xor symbol is $\oplus$):
  <br> 
 
 |input A|input B|XOR  output|
@@ -52,7 +52,7 @@ $p_{1} = a_{0} \oplus a_{2} \oplus a_{3}$<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $p_{2} = a_{1} \oplus a_{2} \oplus a_{3}$
 
-2. Second we will sit four bits of data into seven bits block ( with $C$ as a Hamming codeword symbol ) :<br>
+2. Second we will sit four bits of data into seven bits block(with $C$ as a Hamming codeword symbol) :<br>
 $C = (c_{0} , c_{1} , c_{2} , c_{3} , c_{4} , c_{5} , c_{6})$ \
 $C = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$<br>
 and send it over the channel.
@@ -92,7 +92,7 @@ Sending 0 and receiving 1 (error).\
 Sending 1 and receiving 1.\
 Sending 1 and receiving 0 (error).
 
-* During the time of sending the C codeword in the channel, a noise may be created on C codeword and the C codeword becomes to new D codeword. We simulate a BSC channel in python that has the ability to create a random noise on one of the seven bits of the C codeword.<br>
+* During the time of sending the C codeword in the channel, a noise may be created on C codeword and the C codeword becomes to new D codeword. We simulate a BSC in python that has the ability to create a random noise on one of the seven bits of the C codeword.<br>
 $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
 
@@ -118,7 +118,7 @@ def Noise(C):
 ---
 
  ### How does reciver decode and correct an error in hamming(7,4)?
-1. The reciver recived 7bits D codeword:\
+0. The reciver recived 7bits D codeword:\
 $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
 
