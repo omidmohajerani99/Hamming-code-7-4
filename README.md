@@ -105,7 +105,7 @@ def Noise(C):
 ```
 ---
 
- ### How does reciver decode & fixes one error in hamming code?
+ ### How does reciver decode and correct an error in hamming code?
 The reciver recived 7 bits D codeword:\
 $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
