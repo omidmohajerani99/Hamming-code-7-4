@@ -168,7 +168,8 @@ from prettytable import PrettyTable
 If error was 0 change it to 1. \
 If error was 1 change it to 0.
 
-4. The $(a_{0},a_{1},a_{2},a_{3})$ in $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$ is the message.
+4. The $(a_{0},a_{1},a_{2},a_{3})$ in $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$ is the message.\
+ (The $(d_{2},d_{4},d_{5},d_{5})$ in $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$ is the message.)  
 
 ```RUBY
     Error = int("".join(str(x) for x in l), 2)
