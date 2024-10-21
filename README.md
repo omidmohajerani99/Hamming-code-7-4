@@ -44,19 +44,17 @@ def xor(i,j):
     return int(xor) 
 ```
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$A = (a_{0},a_{1},a_{2},a_{3})$
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$p_{0} = a_{0} \oplus a_{1} \oplus a_{3}$
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$p_{1} = a_{0} \oplus a_{2} \oplus a_{3}$
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$A = (a_{0},a_{1},a_{2},a_{3})$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$p_{0} = a_{0} \oplus a_{1} \oplus a_{3}$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$p_{1} = a_{0} \oplus a_{2} \oplus a_{3}$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $p_{2} = a_{1} \oplus a_{2} \oplus a_{3}$
 
-1. Second we will sit four bits of data into seven bits block ( with $C$ as a Hamming codeword symbol ) :
-<br>
+1. Second we will sit four bits of data into seven bits block ( with $C$ as a Hamming codeword symbol ) :<br>
 $C = (c_{0} , c_{1} , c_{2} , c_{3} , c_{4} , c_{5} , c_{6})$ \
-$C = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
-<br>
+$C = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$<br>
 and send it over the channel.
 
 ```RUBY
