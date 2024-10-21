@@ -1,7 +1,7 @@
 ## Hamming code(7,4): Encoding & decoding (correcting  any single-bit error) in python
 
 ### Objectives:
-Here we will give explanations about the history and coding and decoding (correction of an error) of Hamming(7,4) and we will also simulate a BSC channel that is capable of creating a noise in the transmitted codewords. We have also provided Python code at the end of each section. Finally, we have discussed an example for a better understanding.
+Here we will give explanations about the history and coding and decoding (correction of an error) of Hamming(7,4) and we will also simulate a BSC channel that is capable of creating a noise in the transmitted codewords. We have also provided Python code at the end of each section. Finally, we have discussed an example for better understanding.
 
 ---
 
