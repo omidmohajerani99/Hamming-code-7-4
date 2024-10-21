@@ -209,7 +209,7 @@ $c_{6}$ changed!\
 $D =(0, 0, 1, 0, 1, 1, 1)$
 
 Decoding:\
-$K =(1,1,1)$    in table:  111 &rarr; d6\
+$K =(1,1,1)$  &nbsp;&nbsp;&nbsp;&nbsp;  in table:&nbsp;&nbsp;&nbsp;&nbsp;  111 &rarr; d6\
 Noise happened on d6\
 $A* =(1, 1, 1, 0)$
 
