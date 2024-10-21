@@ -22,8 +22,10 @@ Hamming reasoned that, if a computer can detect an error, it could also correct 
 ---
 
  ### How does sender encode four bits data in hamming(7,4)?
-1. Suppose we want to transmit this 4 bits data $A = (a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel (BSC) and we need to find 3 parity bits $P = (p_{0},p_{1},p_{2})$.\
- At first we have to know xor gate (the xor symbol is $\oplus$):
+0. Suppose we want to transmit this 4 bits data $A = (a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel (BSC) and we need to find 3 parity bits $P = (p_{0},p_{1},p_{2})$.
+ <br> 
+
+ 1. At first we have to know xor gate (the xor symbol is $\oplus$):
  <br> 
 
 |input A|input B|XOR  output|
@@ -41,12 +43,16 @@ def xor(i,j):
         xor=1   
     return int(xor) 
 ```
-* $A = (a_{0},a_{1},a_{2},a_{3})$<br>
-$p_{0} = a_{0} \oplus a_{1} \oplus a_{3}$ \
-$p_{1} = a_{0} \oplus a_{2} \oplus a_{3}$ \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$A = (a_{0},a_{1},a_{2},a_{3})$
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$p_{0} = a_{0} \oplus a_{1} \oplus a_{3}$
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$p_{1} = a_{0} \oplus a_{2} \oplus a_{3}$
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $p_{2} = a_{1} \oplus a_{2} \oplus a_{3}$
 
-2. Second we will sit four bits of data into seven bits block ( with $C$ as a Hamming codeword symbol ) :
+1. Second we will sit four bits of data into seven bits block ( with $C$ as a Hamming codeword symbol ) :
 <br>
 $C = (c_{0} , c_{1} , c_{2} , c_{3} , c_{4} , c_{5} , c_{6})$ \
 $C = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
