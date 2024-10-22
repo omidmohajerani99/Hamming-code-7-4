@@ -16,17 +16,32 @@ Hamming reasoned that, if a computer can detect an error, it could also correct 
 ---
 
 ### What is hamming code(7,4)?
- In coding theory,Hamming(7,4) is a linear error-correcting code and it is a member of a larger family of Hamming codes that encodes four bits of data into seven bits by adding three parity bits and after decoding can correct any single-bit error($t=1$), or detect all single-bit and two-bit errors($\rho=2$). The minimum Hamming distance between any two correct codewords is three($d_{min}=3$).This means that for transmission medium situations where burst errors do not occur, Hamming's(7,4) code is effective.
- * $d_{min}\ge2t+1$ \
+ In coding theory, Hamming(7,4) is a linear error-correcting code and it is a member of a larger family of Hamming codes that encodes four bits of data into seven bits by adding three parity bits and after decoding can correct any single-bit error ($t=1$), or detect all single-bit and two-bit errors ($\rho=2$). The minimum Hamming distance between any two correct codewords is three ($d_{min}=3$). This means that for transmission medium situations where burst errors do not occur, Hamming's(7,4) code is effective.
+ * $d_{min}\ge2t+1$ 
  * $d_{min}\ge \rho+1$
 
 ---
 
- ### How does sender encode four bits data in hamming(7,4)?
-0. Suppose we want to transmit this 4 bits data $A = (a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel(BSC) and we need to find 3 parity bits $P = (p_{0},p_{1},p_{2})$.
- <br> 
+ <!--### How does sender encode four bits data in hamming(7,4)?-->
+ ### Encoding Process
+ <!--0. Suppose we want to transmit this 4 bits data $A = (a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel(BSC) and we need to find 3 parity bits $P = (p_{0},p_{1},p_{2})$.-->
+0. Data Bits: The original message consists of 4 bits.<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  $A = (a_{0},a_{1},a_{2},a_{3})$<br>
+ 
+1. Parity Bits: Three additional bits are calculated based on specific parity checks.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$p = ( p_{0} , p_{1} , p_{2} )$ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$p_{0} = a_{0} \oplus a_{1} \oplus a_{3}$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$p_{1} = a_{0} \oplus a_{2} \oplus a_{3}$<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$p_{2} = a_{1} \oplus a_{2} \oplus a_{3}$
+<br>
 
- 1. At first we have to know xor gate(the xor symbol is $\oplus$):
+<!-- * Now we have to know xor gate (the xor symbol is $\oplus$): -->
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The $\oplus$ is XOR gate symbol:
  <br> 
 
 |input A|input B|XOR  output|
@@ -35,8 +50,10 @@ Hamming reasoned that, if a computer can detect an error, it could also correct 
 | 1     | 0     | 1 |
 | 0     | 1     | 1 |
 | 1     | 1     | 0 |
+ <br> 
 
 ```RUBY
+#Python
 def xor(i,j):            
     if i==j:
         xor=0
@@ -44,21 +61,18 @@ def xor(i,j):
         xor=1   
     return int(xor) 
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$A = (a_{0},a_{1},a_{2},a_{3})$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$p_{0} = a_{0} \oplus a_{1} \oplus a_{3}$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$p_{1} = a_{0} \oplus a_{2} \oplus a_{3}$<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$p_{2} = a_{1} \oplus a_{2} \oplus a_{3}$
+2. Codeword Formation: The resulting 7-bit codeword is formed by combining the 4 data bits and 3 parity bits.
+<!-- 1. Second we will sit four bits of data into seven bits block(with $C$ as a Hamming codeword symbol) :<br> -->
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$C = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$C = (c_{0} , c_{1} , c_{2} , c_{3} , c_{4} , c_{5} , c_{6})$
+<br>
 
-2. Second we will sit four bits of data into seven bits block(with $C$ as a Hamming codeword symbol) :<br>
-$C = (c_{0} , c_{1} , c_{2} , c_{3} , c_{4} , c_{5} , c_{6})$ \
-$C = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$<br>
-and send it over the channel.
+3. Send the C codeword over the channel.
 
 ```RUBY
+#Python
 def Encoding(message):
     print("Alphabet={0,1}  ,  Alphabet size=2  ,  Message length=",4," --->     Block length=",7)
     print("\nSender-Encoding:")
@@ -78,7 +92,8 @@ def Encoding(message):
     return C
 ```
 ---
- ### How simulate a Binary symmetric channel(BSC) that is capable of creating a noise in the transmitted codewords?
+ <!-- ### How simulate a Binary symmetric channel(BSC) that is capable of creating a noise in the transmitted codewords?-->
+ ### Binary Symmetric Channel (BSC)
  * First of all, pay attention to the  basic mathematical model for a communication system:
 <br><br>
   <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/3e5366c809cb41ab57f4364b475895f13a9dd328" class="mwe-math-fallback-image-inline mw-invert skin-invert" title="Channel model" aria-hidden="true" style="vertical-align: -3.146ex; margin-bottom: -0.525ex; width:61.869ex; height:7.843ex;" alt="{\displaystyle {\xrightarrow[{\text{Message}}]{W}}{\begin{array}{|c| }\hline {\text{Encoder}}\\f_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Encoded \atop sequence} }]{A}}{\begin{array}{|c| }\hline {\text{Channel}}\\p(y|x)\\\hline \end{array}}{\xrightarrow[{\mathrm {Received \atop sequence} }]{Y^{n}}}{\begin{array}{|c| }\hline {\text{Decoder}}\\g_{n}\\\hline \end{array}}{\xrightarrow[{\mathrm {Estimated \atop message} }]{\hat {W}}}}"> 
@@ -98,6 +113,7 @@ $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
 
 ```RUBY
+#Python
 import random 
 def Noise(C):
     D=[]
@@ -118,7 +134,8 @@ def Noise(C):
 ```
 ---
 
- ### How does reciver decode and correct an error in hamming(7,4)?
+  <!--### How does reciver decode and correct an error in hamming(7,4)?-->
+  ### Decoding Process
 0. The reciver recived 7bits D codeword:\
 $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
@@ -130,6 +147,7 @@ $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
  
 
  ```RUBY
+ #Python
 def Decoding(d):
     print("\nReceiver-Decoding:  \nMessage d recevide! \nd =",d,"\nd = [d0,d1,d2,d3,d4,d5,d6] \n")
     
