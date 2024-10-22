@@ -187,6 +187,7 @@ def Decoding(d):
 |    111     |    $d_{6}$    |
 
 ```RUBY
+#Python
 from prettytable import PrettyTable 
 
     myTable = PrettyTable(["k2 k1 k0", "Error"]) 
@@ -209,6 +210,7 @@ If error was 1 change it to 0.
  (The $(d_{2},d_{4},d_{5},d_{5})$ in $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$ is the message.)  
 
 ```RUBY
+#Python
     Error = int("".join(str(x) for x in l), 2)
     if Error== 0:
         print ("No noise has occurred.")
