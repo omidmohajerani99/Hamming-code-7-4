@@ -146,14 +146,17 @@ def Noise(C):
   <!--### How does reciver decode and correct an error in hamming(7,4)?-->
   ### Decoding Process
 0. The reciver recived 7bits D codeword:\
+  <br>
 $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
+  <br><br>
 
  1. For decoding we need to find $k_{2} k_{1} k_{0}$ :\
+  <br>
  $k_{2}=d_{3}\oplus d_{4}\oplus d_{5} \oplus d_{6}$\
  $k_{1}=d_{1}\oplus d_{2}\oplus d_{5}\oplus d_{6}$\
  $k_{0}=d_{0} \oplus d_{2} \oplus d_{4} \oplus d_{6}$
- 
+   <br><br>
 
  ```RUBY
  #Python
@@ -242,6 +245,8 @@ Noise happened on d6\
 $A* =(1, 1, 1, 0)$
 
 ```ruby
+#Python
+#Example
 Message = [1,1,1,0]   
 Encoded_Message = Encoding(Message)
 Noisy_Encoded_Message = Noise(Encoded_Message)
@@ -250,7 +255,8 @@ Decoding(Noisy_Encoded_Message)
 ```
 
 ```RUBY
-Terminal:
+#Python
+#Terminal:
 
 Alphabet={0,1}  ,  Alphabet size=2  ,  Message length= 4  --->     Block length= 7
 
