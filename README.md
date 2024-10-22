@@ -146,7 +146,7 @@ def Noise(C):
   <!--### How does reciver decode and correct an error in hamming(7,4)?-->
 
   ### Decoding Process
-0. The reciver recived 7bits D codeword:<br>
+0. The reciver recived 7bits D codeword:<br><br>
 $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$<br>
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$<br><br>
 
