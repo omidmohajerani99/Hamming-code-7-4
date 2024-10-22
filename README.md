@@ -2,7 +2,8 @@
 
 ### Objectives:
 Here we will give explanations about the history and coding and decoding(correction of an error) of Hamming(7,4) and we will also simulate a Binary symmetric channel(BSC) that is capable of creating a noise in the transmitted codewords. We have also provided Python code at the end of each section. Finally, we have discussed an example for better understanding.
-
+<br><br><br>
+This document provides a comprehensive overview of the Hamming(7,4) code, including its history, encoding and decoding processes, and a simulation of a Binary Symmetric Channel (BSC) that introduces noise into transmitted codewords. Additionally, Python code examples are included to illustrate these concepts, followed by a practical example for enhanced understanding.
 ---
 
 ### Hamming code history
