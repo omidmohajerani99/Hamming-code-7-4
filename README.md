@@ -25,13 +25,13 @@ From [https://www.techtarget.com/whatis/definition/Hamming-code ]
  <!--### How does sender encode four bits data in hamming(7,4)?-->
  ### Encoding Process
  <!--0. Suppose we want to transmit this 4 bits data $A = (a_{0},a_{1},a_{2},a_{3})$ over a binary symmetric channel(BSC) and we need to find 3 parity bits $P = (p_{0},p_{1},p_{2})$.-->
-0. Data Bits: The original message consists of 4 bits.<br>
+0. Data Bits: The original message consists of 4 bits.<br><br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   $A = (a_{0},a_{1},a_{2},a_{3})$<br>
  
-1. Parity Bits: Three additional bits are calculated based on specific parity checks.<br>
+1. Parity Bits: Three additional bits are calculated based on specific parity checks.<br><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-$p = ( p_{0} , p_{1} , p_{2} )$ <br>
+$p = ( p_{0} , p_{1} , p_{2} )$ <br><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $p_{0} = a_{0} \oplus a_{1} \oplus a_{3}$<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
