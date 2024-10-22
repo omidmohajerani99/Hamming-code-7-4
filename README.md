@@ -109,8 +109,9 @@ Sending 1 and receiving 1.\
 Sending 1 and receiving 0 (error).
 
 * During the time of sending the C codeword in the channel, a noise may be created on C codeword and the C codeword becomes to new D codeword. We simulate a BSC in python that has the ability to create a random noise on one of the seven bits of the C codeword.<br>
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
 
 ```RUBY
