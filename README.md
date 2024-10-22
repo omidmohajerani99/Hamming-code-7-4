@@ -15,7 +15,7 @@ Hamming reasoned that, if a computer can detect an error, it could also correct 
 
 ---
 
-### What is hamming code(7,4)?
+### Hamming(7,4)
  In coding theory, Hamming(7,4) is a linear error-correcting code and it is a member of a larger family of Hamming codes that encodes four bits of data into seven bits by adding three parity bits and after decoding can correct any single-bit error ($t=1$), or detect all single-bit and two-bit errors ($\rho=2$). The minimum Hamming distance between any two correct codewords is three ($d_{min}=3$). This means that for transmission medium situations where burst errors do not occur, Hamming's(7,4) code is effective.
  * $d_{min}\ge2t+1$ 
  * $d_{min}\ge \rho+1$
