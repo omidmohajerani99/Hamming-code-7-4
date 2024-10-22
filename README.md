@@ -144,6 +144,7 @@ def Noise(C):
 ---
 
   <!--### How does reciver decode and correct an error in hamming(7,4)?-->
+  
   ### Decoding Process
 0. The reciver recived 7bits D codeword:\
   <br>
