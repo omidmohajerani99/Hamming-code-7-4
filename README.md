@@ -102,10 +102,14 @@ Image from [https://en.wikipedia.org/wiki/Noisy-channel_coding_theorem]
 
 * Similarly we have:<br>
 A &rarr; Encoding &rarr; C &rarr; Falling noise &rarr;  D &rarr; Decoding &rarr; A* 
-* In simple terms, it can be said that four events can happen in a symmetric binary channel (BSC):\
-Sending 0 and receiving 0.\
-Sending 0 and receiving 1 (error).\
-Sending 1 and receiving 1.\
+* In simple terms, it can be said that four events can happen in a symmetric binary channel (BSC):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Sending 0 and receiving 0.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Sending 0 and receiving 1 (error).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Sending 1 and receiving 1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Sending 1 and receiving 0 (error).
 
 * During the time of sending the C codeword in the channel, a noise may be created on C codeword and the C codeword becomes to new D codeword. We simulate a BSC in python that has the ability to create a random noise on one of the seven bits of the C codeword.<br>
