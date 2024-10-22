@@ -151,12 +151,10 @@ $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$<br>
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$<br><br>
 
 
- 1. For decoding we need to find $k_{2} k_{1} k_{0}$ :\
-  <br>
- $k_{2}=d_{3}\oplus d_{4}\oplus d_{5} \oplus d_{6}$\
- $k_{1}=d_{1}\oplus d_{2}\oplus d_{5}\oplus d_{6}$\
- $k_{0}=d_{0} \oplus d_{2} \oplus d_{4} \oplus d_{6}$
-   <br><br>
+ 1. For decoding we need to find ( $k_{2} k_{1} k_{0}$ ) :<br><br>
+ $k_{2}=d_{3}\oplus d_{4}\oplus d_{5} \oplus d_{6}$<br>
+ $k_{1}=d_{1}\oplus d_{2}\oplus d_{5}\oplus d_{6}$<br>
+ $k_{0}=d_{0} \oplus d_{2} \oplus d_{4} \oplus d_{6}$<br><br>
 
  ```RUBY
  #Python
@@ -175,7 +173,7 @@ def Decoding(d):
     
  ```
 
- 2. Find that one error with The table below:
+ 1. Find that one error with The table below:
  
 |  $k_{2} k_{1} k_{0}$ |  Error |
 |  :--:| -:|
