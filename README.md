@@ -113,7 +113,7 @@ Sending 1 and receiving 1.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Sending 1 and receiving 0 (error).<br><br>
 
-* Let's assume that our simulated BSC always changes  one bit in 7-bit  codeword C.<br>
+* Let's assume that the simulated BSC always changes one bit in the 7-bit C code word.<br>
 * During the time of sending the C codeword in the channel, created noise causes C codeword becomes to new codeword like D.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
