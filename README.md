@@ -6,12 +6,12 @@ This document provides a comprehensive overview of the Hamming(7,4) code, includ
 -->
 ---
 
-### Hamming code history
-From [https://www.techtarget.com/whatis/definition/Hamming-code ] :
+### Hamming code history  
+ "Before Hamming code, there were several error correction methods in use that were not as efficient or effective. The simplest method involves adding a single parity bit. This can detect a single error but not detect two-bit errors nor correct the error. Another method was repeating each bit three times. This could detect and correct a single bit error but not errors in two bits. Repeating the bits was also very inefficient.\
+ Richard Hamming worked for Bell Labs in the 1940s and 1950s. During that time, computers used relays and read information from punched paper tape. These systems were often prone to errors relating to the paper tape being misread or relays getting stuck. If an operator was on hand when the error occurred, the program could be restarted; if the error occurred outside of working hours, the computer would skip the entire program, losing time and work.\
+ Hamming reasoned that, if a computer can detect an error, it could also correct the error. So, he began working on an error correcting algorithm, and in 1950, he published the Hamming code."
 
-"Before Hamming code, there were several error correction methods in use that were not as efficient or effective. The simplest method involves adding a single parity bit. This can detect a single error but not detect two-bit errors nor correct the error. Another method was repeating each bit three times. This could detect and correct a single bit error but not errors in two bits. Repeating the bits was also very inefficient.\
-Richard Hamming worked for Bell Labs in the 1940s and 1950s. During that time, computers used relays and read information from punched paper tape. These systems were often prone to errors relating to the paper tape being misread or relays getting stuck. If an operator was on hand when the error occurred, the program could be restarted; if the error occurred outside of working hours, the computer would skip the entire program, losing time and work.\
-Hamming reasoned that, if a computer can detect an error, it could also correct the error. So, he began working on an error correcting algorithm, and in 1950, he published the Hamming code."
+From [https://www.techtarget.com/whatis/definition/Hamming-code ]
 
 ---
 
