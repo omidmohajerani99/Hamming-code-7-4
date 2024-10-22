@@ -103,7 +103,7 @@ Image from [https://en.wikipedia.org/wiki/Noisy-channel_coding_theorem]
 <!--
 * Similarly we have:<br>
 A &rarr; Encoding &rarr; C &rarr; Falling noise &rarr;  D &rarr; Decoding &rarr; A* -->
-* In simple terms, it can be said that four events can happen in a symmetric binary channel (BSC):<br>
+* In simple terms, it can be said that four events can happen in a symmetric binary channel (BSC):<br><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Sending 0 and receiving 0.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -111,7 +111,7 @@ Sending 0 and receiving 1 (error).<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Sending 1 and receiving 1.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Sending 1 and receiving 0 (error).
+Sending 1 and receiving 0 (error).<br><br>
 
 * Let's assume our simulated BSC has the ability to alter single-bit in the C codeword.<br>
 * During the time of sending the C codeword in the channel, created noise causes C codeword becomes to new codeword like D.
