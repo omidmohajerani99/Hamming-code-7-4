@@ -152,7 +152,7 @@ $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$\
 $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$
   <br><br>
 
-1. For decoding we need to find $k_{2} k_{1} k_{0}$ :\
+ 1. For decoding we need to find $k_{2} k_{1} k_{0}$ :\
   <br>
  $k_{2}=d_{3}\oplus d_{4}\oplus d_{5} \oplus d_{6}$\
  $k_{1}=d_{1}\oplus d_{2}\oplus d_{5}\oplus d_{6}$\
@@ -173,23 +173,21 @@ def Decoding(d):
     
     l=[k2,k1,k0]
     print("(k2,k1,k0) = ",l,"\n")
-
+    
  ```
 
-2. Find the error with The table below:
-<br> 
-|  $k_{2} k_{1} k_{0}$ |  Error   |
-|  :--:                |        -:|
-|    000               | No Error      |
-|    001               |    $d_{0}$    |
-|    010               |    $d_{1}$    |
-|    011               |    $d_{2}$    |
-|    100               |    $d_{3}$    |
-|    101               |    $d_{4}$    |
-|    110               |    $d_{5}$    |
-|    111               |    $d_{6}$    |
-
-<br> 
+ 2. Find that one error with The table below:
+ 
+|  $k_{2} k_{1} k_{0}$ |  Error |
+|  :--:| -:|
+|    000     | No Error |
+|    001     |    $d_{0}$    |
+|    010     |    $d_{1}$    |
+|    011     |    $d_{2}$    |
+|    100     |    $d_{3}$    |
+|    101     |    $d_{4}$    |
+|    110     |    $d_{5}$    |
+|    111     |    $d_{6}$    |
 
 ```RUBY
 from prettytable import PrettyTable 
@@ -206,13 +204,11 @@ from prettytable import PrettyTable
 
     print(myTable)  
 ```
-1. Correct the error in D:<br><br>
-If error was 0 change it to 1. 
-<br>
+3. Correct the error in D:\
+If error was 0 change it to 1. \
 If error was 1 change it to 0.
-<br><br>
 
-1. The $(a_{0},a_{1},a_{2},a_{3})$ in $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$ is the message.\
+4. The $(a_{0},a_{1},a_{2},a_{3})$ in $D = (p_{0} , p_{1} , a_{0} , p_{2} , a_{1} , a_{2} , a_{3})$ is the message.\
  (The $(d_{2},d_{4},d_{5},d_{5})$ in $D = (d_{0} , d_{1} , d_{2} , d_{3} , d_{4} , d_{5} , d_{6})$ is the message.)  
 
 ```RUBY
